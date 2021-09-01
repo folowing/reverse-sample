@@ -1,0 +1,29 @@
+{
+  "private": true,
+  "scripts": {
+    "compile-native": "mkdir -p artifacts-task/native && cd artifacts-task/native && g++ ../../reverse.cpp -o reverse",
+    "compile-wasm": "mkdir -p artifacts-task/wasm && cd artifacts-task/wasm && emcc -s WASM=1 ../../reverse.cpp -o reverse.js",
+    "compile-truebit": "mkdir -p artifacts-task/truebit artifacts-task/wasm-truebit && cd artifacts-task && node /truebit-eth/emscripten-module-wrapper/prepare.js wasm/reverse.js --out wasm-truebit --asmjs > truebit/reverse.wasm.json && cp wasm-truebit/globals.wasm truebit/reverse.wasm",
+    "compile-contracts": "npx hardhat compile",
+    "compile": "npm run compile-wasm && npm run compile-truebit && npm run compile-contracts",
+    "clean": "rm -rf artifacts artifacts-task cache .address",
+    "deploy": "npx hardhat run deploy.js",
+    "reverse": "npx hardhat run reverse.js"
+  },
+  "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.0.2",
+    "@truverse/contracts": "0.0.2",
+    "ethers": "^5.4.6",
+    "hardhat": "^2.6.2",
+    "ipfs-http-client": "^52.0.2",
+    "truebit-util": "^1.0.1",
+    "web3": "^1.5.2"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "none",
+    "arrowParens": "avoid",
+    "printWidth": 120
+  }
+}
