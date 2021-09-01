@@ -1,5 +1,6 @@
 {
   "private": true,
+  "license": "Apache-2.0",
   "scripts": {
     "compile-native": "mkdir -p artifacts-task/native && cd artifacts-task/native && g++ ../../reverse.cpp -o reverse",
     "compile-wasm": "mkdir -p artifacts-task/wasm && cd artifacts-task/wasm && emcc -s WASM=1 ../../reverse.cpp -o reverse.js",
