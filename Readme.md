@@ -874,6 +874,14 @@ If the data you send to the task and get back from the task are small, you can s
   },
 ```
 
+```
+npm install
+npm run compile
+npm run deploy
+npm run reverse
+npm run clean
+```
+
 ### Without `@truverse/contracts`
 
 If you don't want to use the `@truverse/contracts` community package, here's how to do it from scratch.
